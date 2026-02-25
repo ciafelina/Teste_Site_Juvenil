@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juvenil - Palavra</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #1b0f08, #0f0c29);
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Luz suave atrás do centro */
+body::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,180,100,0.15), transparent 70%);
+  border-radius: 50%;
+  animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+  padding: 20px;
+}
+
+/* Logo */
+.logo {
+  width: 220px;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeDown 2s forwards;
+  filter: drop-shadow(0 0 15px rgba(255,200,120,0.5));
+}
+
+@keyframes fadeDown {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeIn 2s 1s forwards;
+}
+
+button {
+  padding: 18px 60px;
+  font-size: 20px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(45deg, #c7902e, #ffcc70);
+  color: #2b1a0f;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 25px rgba(255,200,120,0.5);
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 45px rgba(255,220,150,0.9);
+}
+
+button.hide {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+#mensagem {
+  margin-top: 60px;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.5s ease;
+}
+
+#mensagem.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.assinatura {
+  margin-top: 20px;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .logo { width: 150px; }
+  h1 { font-size: 1.5rem; }
+  #mensagem { font-size: 1.2rem; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <img src="logo.png" class="logo" alt="Juvenil Logo">
+
+  <h1>Deus quer falar com você...</h1>
+
+  <button id="botao" onclick="revelarMensagem()">Receber Palavra</button>
+
+  <div id="mensagem"></div>
+  <div id="assinatura" class="assinatura"></div>
+
+</div>
+
+<script>
+const mensagens = [
+{
+texto: "Porque Eu bem sei os planos que tenho para você — planos de paz e não de mal, para lhe dar um futuro cheio de esperança.",
+autor: "Jeremias 29,11"
+},
+{
+texto: "O Senhor é meu pastor, nada me faltará. Ainda que eu atravesse o vale escuro, não temerei mal algum, porque Tu estás comigo.",
+autor: "Salmo 23"
+},
+{
+texto: "Não tenha medo, porque Eu estou com você; não se apavore, pois Eu sou o seu Deus. Eu o fortaleço e o ajudo.",
+autor: "Isaías 41,10"
+},
+{
+texto: "Nada te perturbe, nada te espante. Tudo passa, Deus não muda. A paciência tudo alcança.",
+autor: "Santa Teresa d’Ávila"
+},
+{
+texto: "Faça tudo por amor, e você encontrará sentido até nas pequenas coisas.",
+autor: "Santa Teresinha do Menino Jesus"
+}
+];
+
+function revelarMensagem() {
+  const btn = document.getElementById("botao");
+  const mensagemDiv = document.getElementById("mensagem");
+  const assinaturaDiv = document.getElementById("assinatura");
+
+  const escolhida = mensagens[Math.floor(Math.random() * mensagens.length)];
+
+  btn.classList.add("hide");
+
+  setTimeout(() => {
+    btn.style.display = "none";
+  }, 500);
+
+  mensagemDiv.innerText = escolhida.texto;
+  assinaturaDiv.innerText = "- " + escolhida.autor;
+
+  setTimeout(() => {
+    mensagemDiv.classList.add("show");
+  }, 300);
+}
+</script>
+
+</body>
+</html>
