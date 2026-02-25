@@ -24,6 +24,19 @@ body {
   overflow: hidden;
 }
 
+.imagem {
+  width: 220px;
+  border-radius: 50%; /* deixa redonda estilo perfil */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 4px solid white;
+  transition: 0.3s ease;
+}
+
+.imagem:hover {
+  transform: scale(1.05);
+}
+
+
 /* Luz dourada pulsando */
 body::before {
   content: "";
@@ -127,7 +140,7 @@ button.hide {
 
 <div class="container">
 
-  <img src="logo.png" class="logo" alt="Juvenil Logo">
+  <img src="logo.png" class="imagem">
 
   <h1>Deus quer falar com você...</h1>
 
