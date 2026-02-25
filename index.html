@@ -26,7 +26,7 @@ body {
 
 .imagem {
   width: 220px;
-  border-radius: 50%; /* deixa redonda estilo perfil */
+  border-radius: 50%;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   border: 4px solid white;
   transition: 0.3s ease;
@@ -36,8 +36,6 @@ body {
   transform: scale(1.05);
 }
 
-
-/* Luz dourada pulsando */
 body::before {
   content: "";
   position: absolute;
@@ -58,19 +56,6 @@ body::before {
   z-index: 2;
   max-width: 850px;
   padding: 20px;
-}
-
-.logo {
-  width: 220px;
-  margin-bottom: 30px;
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: fadeDown 2s forwards;
-  filter: drop-shadow(0 0 15px rgba(255,200,120,0.5));
-}
-
-@keyframes fadeDown {
-  to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
@@ -129,7 +114,7 @@ button.hide {
 }
 
 @media (max-width: 600px) {
-  .logo { width: 150px; }
+  .imagem { width: 150px; }
   h1 { font-size: 1.5rem; }
   #mensagem { font-size: 1.2rem; }
 }
@@ -144,7 +129,7 @@ button.hide {
 
   <h1>Deus quer falar com você...</h1>
 
-  <button id="botao" onclick="revelarMensagem()">Receber Palavra</button>
+  <button id="botao">Receber Palavra</button>
 
   <div id="mensagem"></div>
   <div id="assinatura" class="assinatura"></div>
@@ -153,154 +138,73 @@ button.hide {
 
 <script>
 const mensagens = [
-"Não temas, porque eu estou contigo; não te assombres, porque eu sou teu Deus. Eu te fortaleço, e te ajudo, e te sustento com a minha destra fiel. (Isaías 41,10)",
 
-"Entrega o teu caminho ao Senhor, confia nele, e o mais Ele fará. (Salmo 37,5)",
+"Eu vejo o esforço que você faz para ser forte todos os dias. Mesmo quando ninguém reconhece, Eu reconheço. Continue firme, porque o que você planta em silêncio, Eu farei florescer no tempo certo. (Gálatas 6,9)",
 
-"Tudo posso naquele que me fortalece. (Filipenses 4,13)",
+"Não deixe que uma fase difícil te faça esquecer das promessas que Eu já te fiz. O deserto não é o destino final, é apenas um caminho de preparação. (Deuteronômio 8,2)",
 
-"Porque eu bem sei os planos que tenho para vós, diz o Senhor, planos de paz e não de mal. (Jeremias 29,11)",
+"Você não é definido pelos seus erros, mas pelo Meu amor por você. Meu amor é maior que qualquer passado e mais forte que qualquer culpa. (Romanos 5,8)",
 
-"O Senhor é meu pastor, nada me faltará. (Salmo 23,1)",
+"Quando a ansiedade tentar dominar seu coração, entregue cada preocupação a Mim. Eu cuido até dos detalhes que você nem percebe. (1 Pedro 5,7)",
 
-"Buscai primeiro o Reino de Deus e a sua justiça, e tudo mais vos será acrescentado. (Mateus 6,33)",
+"Você foi criado com dons únicos. Não enterre aquilo que Eu te dei por medo ou insegurança. O mundo precisa do seu testemunho. (Mateus 25,14-29)",
 
-"Se Deus é por nós, quem será contra nós? (Romanos 8,31)",
+"Mesmo quando você se sente invisível, Eu te vejo. Mesmo quando se sente esquecido, Eu lembro de você pelo nome. (Isaías 43,1)",
 
-"O amor é paciente, o amor é bondoso. (1 Coríntios 13,4)",
+"Não tenha pressa para viver aquilo que ainda não está preparado para sustentar. O tempo de espera também é cuidado Meu. (Salmo 27,14)",
 
-"Alegrai-vos sempre no Senhor. (Filipenses 4,4)",
+"Quando as portas se fecharem, não desanime. Eu fecho caminhos que não te levariam ao propósito que preparei para você. (Apocalipse 3,7)",
 
-"Vinde a mim todos os que estais cansados e oprimidos, e eu vos aliviarei. (Mateus 11,28)",
+"A dor que você sente hoje não será desperdiçada. Eu transformo lágrimas em testemunhos e cicatrizes em força. (Salmo 126,5)",
 
-"Sede fortes e corajosos, não temais. (Josué 1,9)",
+"Não viva tentando provar seu valor para as pessoas. Seu valor já foi provado na cruz. Você é precioso para Mim. (João 3,16)",
 
-"A fé remove montanhas. (Mateus 17,20)",
+"Quando sentir vontade de desistir, lembre-se: Eu nunca desisti de você. Minha fidelidade permanece, mesmo quando a sua falha. (2 Timóteo 2,13)",
 
-"O Senhor é minha luz e minha salvação, de quem terei medo? (Salmo 27,1)",
+"Não permita que o medo do fracasso impeça você de tentar. Eu caminho com você em cada passo que dá com fé. (Josué 1,9)",
 
-"Permanecei no meu amor. (João 15,9)",
+"Você pode não entender agora, mas Eu estou alinhando situações, pessoas e oportunidades ao seu favor. Confie. (Provérbios 16,9)",
 
-"Eu sou o caminho, a verdade e a vida. (João 14,6)",
+"Não troque o eterno pelo imediato. As escolhas que você faz hoje constroem o futuro que viverá amanhã. (Mateus 6,19-21)",
 
-"O choro pode durar uma noite, mas a alegria vem pela manhã. (Salmo 30,5)",
+"Quando se sentir fraco espiritualmente, aproxime-se de Mim. Minha presença renova, fortalece e transforma. (Isaías 40,29)",
 
-"O Senhor combate por vós. (Êxodo 14,14)",
+"Não carregue sozinho o peso que Eu já carreguei por você. Entregue suas culpas e recomece. (Mateus 11,28-30)",
 
-"A minha graça te basta. (2 Coríntios 12,9)",
+"Você não precisa ser perfeito para ser amado. Meu amor não depende do seu desempenho, mas da Minha graça. (Efésios 2,8-9)",
 
-"Sede misericordiosos como vosso Pai é misericordioso. (Lucas 6,36)",
+"Há sonhos dentro de você que foram plantados por Mim. Não os abandone por causa das dificuldades. Persevere. (Habacuque 2,3)",
 
-"O Espírito Santo vos ensinará todas as coisas. (João 14,26)",
+"Não permita que amizades erradas afastem você do caminho certo. Escolha estar perto de quem te aproxima de Mim. (1 Coríntios 15,33)",
 
-// Santos
+"Se o mundo te rejeitar por causa da sua fé, lembre-se: é melhor ser rejeitado pelo mundo do que se afastar de Mim. (João 15,18-19)",
 
-"Comece fazendo o que é necessário, depois o que é possível, e de repente você estará fazendo o impossível. – São Francisco de Assis",
+"Eu transformo histórias improváveis em testemunhos poderosos. Sua origem não limita o que Eu posso fazer em você. (1 Samuel 16,7)",
 
-"Não tenha medo de ser santo. – São João Paulo II",
+"Quando tudo parecer parado, Eu ainda estou trabalhando. O silêncio não significa ausência. (Salmo 46,10)",
 
-"A santidade não consiste em fazer coisas extraordinárias, mas em fazer com amor as coisas simples. – Santa Teresinha",
+"Não baseie sua identidade na aparência, seguidores ou opiniões. Sua identidade está em Mim. (1 Samuel 16,7)",
 
-"Quem reza se salva, quem não reza se condena. – Santo Afonso de Ligório",
+"Se você Me buscar de todo coração, Me encontrará. Eu nunca me escondo de quem Me procura com sinceridade. (Jeremias 29,13)",
 
-"O amor tudo suporta. – São Padre Pio",
+"Não tenha medo de começar de novo. Recomeços também fazem parte do Meu plano para sua vida. (Isaías 43,19)",
 
-"A alegria é a prova de que Deus está presente. – Santa Teresa de Calcutá",
+"Eu uso até seus erros para ensinar, moldar e fortalecer você. Nada é em vão quando você confia em Mim. (Romanos 8,28)",
 
-"Deus não escolhe os capacitados, mas capacita os escolhidos. – Santo Agostinho",
+"Quando você decide viver por Mim, talvez não seja o caminho mais fácil, mas será o mais verdadeiro e seguro. (Mateus 7,14)",
 
-"Sejamos aquilo que Deus quer, e incendiaremos o mundo. – Santa Catarina de Sena",
+"A santidade não é sobre perfeição, é sobre decisão diária de permanecer em Mim. Um dia de cada vez. (1 Pedro 1,15-16)",
 
-"Confie tudo a Jesus, Ele cuida de tudo. – São Padre Pio",
+"Não se desespere com o futuro. O amanhã ainda está nas Minhas mãos. Viva o hoje confiando em Mim. (Mateus 6,34)",
 
-"A medida do amor é amar sem medida. – Santo Agostinho",
+"Você é parte de algo muito maior do que imagina. Sua vida tem impacto eterno quando você escolhe caminhar comigo. (Colossenses 3,2)"
 
-// Vou completar até 80
-
-"O Senhor te abençoe e te guarde. (Números 6,24)",
-
-"Felizes os puros de coração, porque verão a Deus. (Mateus 5,8)",
-
-"Perseverai na oração. (Colossenses 4,2)",
-
-"Deus é amor. (1 João 4,8)",
-
-"Sede luz do mundo. (Mateus 5,14)",
-
-"A esperança não decepciona. (Romanos 5,5)",
-
-"Confia no Senhor de todo o teu coração. (Provérbios 3,5)",
-
-"O Senhor é bom e eterno é o seu amor. (Salmo 100)",
-
-"Clama a mim e eu te responderei. (Jeremias 33,3)",
-
-"Permanecei firmes na fé. (1 Coríntios 16,13)",
-
-"Vós sois o sal da terra. (Mateus 5,13)",
-
-"O Senhor está perto dos que têm o coração ferido. (Salmo 34,18)",
-
-"Deus enxugará toda lágrima. (Apocalipse 21,4)",
-
-"Quem perseverar até o fim será salvo. (Mateus 24,13)",
-
-"Revesti-vos do homem novo. (Efésios 4,24)",
-
-"A palavra de Deus é viva e eficaz. (Hebreus 4,12)",
-
-"O Senhor é refúgio para os oprimidos. (Salmo 9,9)",
-
-"Eu estarei convosco todos os dias. (Mateus 28,20)",
-
-"O amor lança fora todo medo. (1 João 4,18)",
-
-"Cria em mim um coração puro. (Salmo 51,10)",
-
-"Faça tudo por amor a Deus. – São João Bosco",
-
-"A oração é a melhor arma que temos. – São Padre Pio",
-
-"Ser santo é possível para você. – São João Paulo II",
-
-"Não desanime, Deus está no controle. – Santa Teresa d’Ávila",
-
-"Reze, espere e não se preocupe. – São Padre Pio",
-
-"A humildade é a base de toda virtude. – Santo Agostinho",
-
-"O amor é a vocação universal. – Santa Teresinha",
-
-"Deus fala no silêncio. – São João da Cruz",
-
-"A confiança em Deus deve ser total. – Santa Faustina",
-
-"Faça da sua vida um testemunho. – São Francisco de Assis",
-
-"A oração move o coração de Deus. – Santo Cura d'Ars",
-
-"Seja fiel nas pequenas coisas. – Santa Teresa de Calcutá",
-
-"Deus nunca se cansa de perdoar. – Papa Francisco",
-
-"O céu é nossa meta. – São João Bosco",
-
-"A cruz é a prova do amor. – São Padre Pio",
-
-"Quem ama nunca está sozinho. – São João Paulo II",
-
-"Deus é maior que qualquer problema. – Santa Teresa de Calcutá",
-
-"A santidade começa hoje. – Santo Antônio",
-
-"Entregue-se totalmente a Deus. – Santa Teresa d’Ávila",
-
-"Viva com alegria no Senhor. – São Filipe Néri"
 ];
 
 const btn = document.getElementById("botao");
 const mensagemDiv = document.getElementById("mensagem");
-const assinaturaDiv = document.getElementById("assinatura");
+
+btn.addEventListener("click", revelarMensagem);
 
 function revelarMensagem() {
 
@@ -310,12 +214,12 @@ function revelarMensagem() {
 
   const escolhida = mensagens[Math.floor(Math.random() * mensagens.length)];
 
-  localStorage.setItem("palavraRecebida", JSON.stringify(escolhida));
+  localStorage.setItem("palavraRecebida", escolhida);
 
   mostrarMensagem(escolhida);
 }
 
-function mostrarMensagem(dados) {
+function mostrarMensagem(texto) {
 
   btn.classList.add("hide");
 
@@ -323,8 +227,7 @@ function mostrarMensagem(dados) {
     btn.style.display = "none";
   }, 500);
 
-  mensagemDiv.innerText = dados.texto;
-  assinaturaDiv.innerText = "- " + dados.autor;
+  mensagemDiv.innerText = texto;
 
   setTimeout(() => {
     mensagemDiv.classList.add("show");
@@ -336,13 +239,11 @@ window.onload = function() {
   const salvo = localStorage.getItem("palavraRecebida");
 
   if (salvo) {
-    const dados = JSON.parse(salvo);
-    mostrarMensagem(dados);
+    mostrarMensagem(salvo);
   }
 
 }
 </script>
 
 </body>
-
 </html>
