@@ -24,13 +24,13 @@ body {
   overflow: hidden;
 }
 
-/* Luz suave atrás do centro */
+/* Luz dourada pulsando */
 body::before {
   content: "";
   position: absolute;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(255,180,100,0.15), transparent 70%);
+  background: radial-gradient(circle, rgba(255,180,100,0.18), transparent 70%);
   border-radius: 50%;
   animation: pulse 6s ease-in-out infinite;
 }
@@ -47,7 +47,6 @@ body::before {
   padding: 20px;
 }
 
-/* Logo */
 .logo {
   width: 220px;
   margin-bottom: 30px;
@@ -163,12 +162,24 @@ autor: "Santa Teresinha do Menino Jesus"
 }
 ];
 
+const btn = document.getElementById("botao");
+const mensagemDiv = document.getElementById("mensagem");
+const assinaturaDiv = document.getElementById("assinatura");
+
 function revelarMensagem() {
-  const btn = document.getElementById("botao");
-  const mensagemDiv = document.getElementById("mensagem");
-  const assinaturaDiv = document.getElementById("assinatura");
+
+  if (localStorage.getItem("palavraRecebida")) {
+    return;
+  }
 
   const escolhida = mensagens[Math.floor(Math.random() * mensagens.length)];
+
+  localStorage.setItem("palavraRecebida", JSON.stringify(escolhida));
+
+  mostrarMensagem(escolhida);
+}
+
+function mostrarMensagem(dados) {
 
   btn.classList.add("hide");
 
@@ -176,12 +187,23 @@ function revelarMensagem() {
     btn.style.display = "none";
   }, 500);
 
-  mensagemDiv.innerText = escolhida.texto;
-  assinaturaDiv.innerText = "- " + escolhida.autor;
+  mensagemDiv.innerText = dados.texto;
+  assinaturaDiv.innerText = "- " + dados.autor;
 
   setTimeout(() => {
     mensagemDiv.classList.add("show");
   }, 300);
+}
+
+window.onload = function() {
+
+  const salvo = localStorage.getItem("palavraRecebida");
+
+  if (salvo) {
+    const dados = JSON.parse(salvo);
+    mostrarMensagem(dados);
+  }
+
 }
 </script>
 
